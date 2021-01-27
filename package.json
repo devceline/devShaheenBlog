@@ -1,0 +1,16 @@
+{
+  "name": "devShaheenBlog",
+  "version": "1.0.0",
+  "description": "Backend hosted on devshaheen.com",
+  "main": "index.js",
+  "repository": "github.com/shaheensarafa/devshaheenblog",
+  "author": "Shaheen",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@types/express": "^4.17.11",
+    "@types/mongoose": "^5.10.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.13"
+  }
+}
