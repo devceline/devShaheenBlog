@@ -7,6 +7,10 @@
   "author": "Shaheen",
   "license": "MIT",
   "private": false,
+  "scripts": {
+      "build": "tsc",
+      "watch": "tsc --watch"
+  },
   "dependencies": {
     "@types/express": "^4.17.11",
     "@types/mongoose": "^5.10.3",
