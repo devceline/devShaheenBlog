@@ -43,11 +43,11 @@ app.use((req, res, next) => {
     }
     
     const apiKey = req.header('ApiKey');
-    if(apiKey && apiKey == process.env.BlogsApiKey){
+    if(apiKey && apiKey == process.env.BlogApiKey){
         next();
     }
     else {
-        res.status(401).end("Unauthorized. Check API key.");
+        res.status(401).end(`Unauthorized. Check API key.`);
     }
 });
 
@@ -90,7 +90,7 @@ app.get('/blogs/:blogid', (req, res) => {
                 error: `Blog not found with id ${req.params.blogid}`
             })) ;
         }
-        res.status(200).end(JSON.stringify(blog)) ;
+        res.status(200).end(JSON.stringify(blog[0])) ;
     })
 });
 
