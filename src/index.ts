@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 
 const PORT = process.env.PORT || 3000;
 
+
 mongoose.connect("mongodb://localhost:27017/devshaheen-test")
 
 
@@ -76,7 +77,7 @@ app.get('/blogs', (req, res) => {
     Blog.find({}, null, {
         skip: page * limit,
         limit: limit
-    }, (err, blogs) => {
+    }).sort({createdOn: -1}).exec((blogs: any) => {
         res.status(200).end(JSON.stringify(blogs)) ;
     })
 });
