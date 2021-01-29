@@ -75,12 +75,10 @@ app.get('/blogs', (req, res) => {
     const page = parseInt(req.query.page as string);
     const limit = parseInt(req.query.limit as string);
     Blog.find({}, null, {
+        sort: {createdOn: -1},
         skip: page * limit,
-        limit: limit
+        limit: limit,
     }, (err, blogs) => {
-        const blogsSorted = blogs.sort((a, b) => {
-            return a.get("createdOn") > b.get("createdOn")? -1 : 0;
-        })
         res.status(200).end(JSON.stringify(blogs))
     });
 });
