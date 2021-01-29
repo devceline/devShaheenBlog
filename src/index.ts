@@ -77,9 +77,12 @@ app.get('/blogs', (req, res) => {
     Blog.find({}, null, {
         skip: page * limit,
         limit: limit
-    }).sort({createdOn: -1}).exec((blogs: any) => {
-        res.status(200).end(JSON.stringify(blogs)) ;
-    })
+    }, (err, blogs) => {
+        const blogsSorted = blogs.sort((a, b) => {
+            return a.get("createdOn") > b.get("createdOn")? -1 : 0;
+        })
+        res.status(200).end(JSON.stringify(blogs))
+    });
 });
 
 app.get('/blogs/:blogid', (req, res) => {
