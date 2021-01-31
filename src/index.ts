@@ -74,7 +74,12 @@ app.post('/blogs', (rq, res) => {
 app.get('/blogs', (req, res) => {
     const page = parseInt(req.query.page as string);
     const limit = parseInt(req.query.limit as string);
-    Blog.find({}, null, {
+    let query: any = {};
+
+    if(req.query.tag)
+        query.tags = req.query.tag;
+
+    Blog.find(query, null, {
         sort: {createdOn: -1},
         skip: page * limit,
         limit: limit,
